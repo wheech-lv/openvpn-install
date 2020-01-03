@@ -367,7 +367,7 @@ function installQuestions () {
 		DH_TYPE="1" # ECDH
 		DH_CURVE="prime256v1"
 		HMAC_ALG="SHA256"
-		TLS_SIG="1" # tls-crypt
+		TLS_SIG="2" # tls-auth
 	else
 		echo ""
 		echo "Choose which cipher you want to use for the data channel:"
@@ -720,7 +720,8 @@ user nobody
 group $NOGROUP
 persist-key
 persist-tun
-keepalive 10 120
+keepalive 10 20
+duplicate-cn
 topology subnet
 server 10.8.0.0 255.255.255.0
 ifconfig-pool-persist ipp.txt" >> /etc/openvpn/server.conf
